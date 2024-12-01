@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love, Chanyle</title>
+    <style>
+        body {
+            background-color: #f8d0d0; /* Light subtle pink background */
+            font-family: 'Inter', sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .box {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 80%;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #f06292; /* Pink button */
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .calculator-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .calculator {
+            display: grid;
+            grid-template-columns: repeat(4, 60px);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .calculator button {
+            width: 60px;
+            height: 60px;
+            font-size: 18px;
+            background-color: #f06292;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #surprise-link {
+            display: none;
+            color: #f06292;
+            text-decoration: none;
+        }
+
+        .message-box {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        #calculator-screen {
+            margin-bottom: 20px;
+            width: 100%;
+            height: 50px;
+            text-align: right;
+            font-size: 24px;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Password Page -->
+<div class="container" id="password-page">
+    <div class="box">
+        <h2>Please enter the password.</h2>
+        <p>Clue: You are already familiar with it.</p>
+        <input type="password" id="password-input" placeholder="Enter password">
+        <br><br>
+        <button onclick="checkPassword()">Submit</button>
+    </div>
+</div>
+
+<!-- Calculator Page -->
+<div class="container" id="calculator-page" style="display:none;">
+    <div class="calculator-container">
+        <div class="box">
+            <h2>Please enter the numbers of your monthly anniversary date.</h2>
+            <p>Clue: Use addition for a surprise.</p>
+        </div>
+        
+        <!-- Calculator screen -->
+        <input type="text" id="calculator-screen" disabled>
+        
+        <!-- Calculator buttons -->
+        <div class="calculator">
+            <button onclick="appendNumber(1)">1</button>
+            <button onclick="appendNumber(2)">2</button>
+            <button onclick="appendNumber(3)">3</button>
+            <button onclick="appendNumber(4)">4</button>
+            <button onclick="appendNumber(5)">5</button>
+            <button onclick="appendNumber(6)">6</button>
+            <button onclick="appendNumber(7)">7</button>
+            <button onclick="appendNumber(8)">8</button>
+            <button onclick="appendNumber(9)">9</button>
+            <button onclick="appendNumber(0)">0</button>
+            <button onclick="appendOperator('+')">+</button>
+            <button onclick="clearScreen()">C</button>
+            <button onclick="calculate()">=</button>
+        </div>
+        
+        <div class="message-box">
+            <a href="https://medium.com/@rhianchanylebdeleon/happy-monthsary-pretty-girl-4b828230a44e" id="surprise-link" target="_blank">Click here for the surprise</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Function to check password
+    function checkPassword() {
+        const password = document.getElementById('password-input').value;
+        if (password === 'eunisse') {
+            document.getElementById('password-page').style.display = 'none';
+            document.getElementById('calculator-page').style.display = 'block';
+        } else {
+            alert('Incorrect password!');
+        }
+    }
+
+    // Function to append numbers or operators to the calculator screen
+    function appendNumber(num) {
+        document.getElementById('calculator-screen').value += num;
+    }
+
+    function appendOperator(operator) {
+        document.getElementById('calculator-screen').value += operator;
+    }
+
+    // Function to clear the screen
+    function clearScreen() {
+        document.getElementById('calculator-screen').value = '';
+    }
+
+    // Function to calculate the result
+    function calculate() {
+        const expression = document.getElementById('calculator-screen').value;
+        if (expression === '11+2' || expression === '2+11') {
+            document.getElementById('surprise-link').style.display = 'inline';
+        } else {
+            alert('Incorrect calculation!');
+        }
+    }
+</script>
+
+</body>
+</html>
